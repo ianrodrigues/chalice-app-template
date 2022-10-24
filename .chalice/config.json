@@ -1,0 +1,13 @@
+{
+    "version": "2.0",
+    "app_name": ":app-name:",
+    "api_gateway_stage": "api",
+    "stages": {
+        "dev": {
+            "environment_variables": {
+                "CHALICE_DEBUG": "True",
+                "CHALICE_STAGE": "dev"
+            }
+        }
+    }
+}
