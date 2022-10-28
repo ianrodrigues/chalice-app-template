@@ -18,11 +18,11 @@ LOGGING = {
     "disable_existing_loggers": False,
     "formatters": {
         "simple": {
-            "format": "{levelname} {name} {message}",
+            "format": "[{levelname}] {name} {message}",
             "style": "{",
         },
         "verbose": {
-            "format": "{asctime} {levelname} {name} {message}",
+            "format": "{asctime} [{levelname}] {name} {message}",
             "style": "{",
         },
     },
@@ -30,19 +30,19 @@ LOGGING = {
         "cloudwatch": {
             "level": "INFO",
             "class": "logging.StreamHandler",
-            "formatter": "verbose",
-        },
-        "local": {
-            "level": "DEBUG",
-            "class": "logging.FileHandler",
-            "filename": "logs/chalice.log",
-            "formatter": "verbose",
+            "formatter": "simple",
         },
     },
     "loggers": {
-        "root": {
-            "handlers": ["cloudwatch", "local"],
-            "level": "DEBUG",
+        "app": {
+            "handlers": ["cloudwatch"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "chalicelib": {
+            "handlers": ["cloudwatch"],
+            "level": "INFO",
+            "propagate": False,
         },
     },
 }
